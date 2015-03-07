@@ -1,4 +1,4 @@
-package peasant_multiplication
+package russian_peasant_multiplication
 
 import(
     "fmt"
@@ -18,13 +18,13 @@ func Multiply(left int, right int) int {
     var sign = 1;
 
     if left < 0 {
-        left = -1 * left;
-        sign = -1 * sign;
+        left *= -1;
+        sign = -1;
     }
 
     if right < 0 {
-        right = -1 * right;
-        sign = -1 * sign;
+        right *= -1;
+        sign *= -1;
     }
 
 
@@ -33,15 +33,15 @@ func Multiply(left int, right int) int {
         fmt.Printf("%d * %d\n", left, right);
 
         if left % 2 != 0 {
-            total = total + right;
+            total += right;
         }
 
         if(left == 1){
             break;
         }
 
-        left = left / 2;
-        right = right * 2;
+        left /= 2;
+        right *= 2;
     }
 
     return sign * total;

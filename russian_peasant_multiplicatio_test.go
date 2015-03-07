@@ -1,4 +1,4 @@
-package peasant_multiplication
+package russian_peasant_multiplication
 
 import (
     "math/rand"
