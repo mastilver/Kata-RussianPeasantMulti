@@ -7,7 +7,7 @@ import (
     "github.com/stretchr/testify/assert"
 )
 
-func Test_Multiply_1(t *testing.T){
+func Test_Multiply(t *testing.T){
     assert := assert.New(t)
 
     assert.Equal(0, Multiply(0, 0), "0 * 0 should equal 0")
@@ -22,5 +22,23 @@ func Test_Multiply_1(t *testing.T){
         var result = left * right;
 
         assert.Equal(result, Multiply(left, right), fmt.Sprintf("%d * %d should equal %d", left, right, result))
+    }
+}
+
+func Test_RecurciveMultiply(t *testing.T){
+    assert := assert.New(t)
+
+    assert.Equal(0, RecurciveMultiply(0, 0), "0 * 0 should equal 0")
+    assert.Equal(-100, RecurciveMultiply(-5, 20), "-5 * 20 should equal -100")
+    assert.Equal(-1337, RecurciveMultiply(191, -7), "191 * -7 should equal -1337")
+    assert.Equal(400, RecurciveMultiply(20, 20), "-20 * -20 should equal 400")
+
+    for i := 0; i < 10; i++ {
+
+        var left = rand.Int();
+        var right = rand.Int();
+        var result = left * right;
+
+        assert.Equal(result, RecurciveMultiply(left, right), fmt.Sprintf("%d * %d should equal %d", left, right, result))
     }
 }

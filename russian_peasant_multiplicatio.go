@@ -26,6 +26,21 @@ func Multiply(left int, right int) int {
     return sign * total;
 }
 
+func RecurciveMultiply(left int, right int) int {
+
+    var sign int;
+
+    left, right, sign = CleanSign(left, right);
+
+    if sign == 0 {
+        return 0;
+    } else if left % 2 == 0 {
+        return sign * RecurciveMultiply(left / 2, right * 2);
+    } else {
+        return sign * (RecurciveMultiply(left / 2, right * 2) + right);
+    }
+}
+
 func CleanSign(left int, right int) (int, int, int){
 
     if left == 0 || right == 0 {
