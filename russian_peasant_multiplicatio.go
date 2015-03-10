@@ -7,14 +7,31 @@ import(
 
 func Multiply(left int, right int) int {
     var total int = 0;
+    var sign int;
 
+    left, right, sign = CleanSign(left, right);
 
-    // return zero if one of the number is zero
-    if left == 0 || right == 0 {
-        return 0;
+    for left != 0 {
+
+        fmt.Printf("%d * %d\n", left, right);
+
+        if left % 2 != 0 {
+            total += right;
+        }
+
+        left /= 2;
+        right *= 2;
     }
 
-    // protect against negative number
+    return sign * total;
+}
+
+func CleanSign(left int, right int) (int, int, int){
+
+    if left == 0 || right == 0 {
+        return left, right, 0;
+    }
+
     var sign = 1;
 
     if left < 0 {
@@ -27,22 +44,5 @@ func Multiply(left int, right int) int {
         sign *= -1;
     }
 
-
-    for {
-
-        fmt.Printf("%d * %d\n", left, right);
-
-        if left % 2 != 0 {
-            total += right;
-        }
-
-        if(left == 1){
-            break;
-        }
-
-        left /= 2;
-        right *= 2;
-    }
-
-    return sign * total;
+    return left, right, sign;
 }
